@@ -1,0 +1,14 @@
+create navigators
+create screens
+create data structure
+build UI elements
+keep common elements in separate folder to re use them
+create redux store for app wide state management
+use objects if more states are there
+work on crud operations using dummy data
+validate data
+connect with backend
+change id
+fetch once and update data while updating local store data, instead of fetching it again and again 
+handel backend error using try catch
+enjoy the app lets nachooooooooo

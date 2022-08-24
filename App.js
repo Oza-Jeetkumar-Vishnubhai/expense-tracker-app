@@ -1,20 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { StatusBar } from "expo-status-bar";
+import Stack from "./Navigators/Stack";
+import { Provider } from "react-redux";
+import store from "./store";
+import * as SplashScreen from "expo-splash-screen";
+import { useCallback, useEffect} from "react";
+// LogBox.ignoreLogs([
+//   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
+// ]);
 export default function App() {
+  SplashScreen.preventAutoHideAsync();
+  const onLayoutRootView = useCallback(async () => {
+    await SplashScreen.hideAsync();
+  }, []);
+
+  useEffect(() => {
+    onLayoutRootView();
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+        <Provider store={store}>
+          <StatusBar style="auto" />
+          {/* Navigators */}
+          <Stack />
+        </Provider>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
